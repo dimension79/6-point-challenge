@@ -3,95 +3,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff8e7">
+  <meta name="theme-color" content="#6c63e8">
   <title>6点大挑战</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="sky-decor" aria-hidden="true">
+    <span class="cloud cloud--one"></span>
+    <span class="cloud cloud--two"></span>
+    <span class="star star--one">★</span>
+    <span class="star star--two">★</span>
+    <span class="star star--three">✦</span>
+  </div>
+
   <main class="game-shell">
     <header class="game-header">
       <div class="title-row">
-        <span class="title-card" aria-hidden="true">6</span>
-        <div>
-          <p class="eyebrow">快乐数学小游戏</p>
+        <span class="title-card" aria-hidden="true">
+          <span>6</span>
+          <small>GO!</small>
+        </span>
+        <div class="title-copy">
+          <p class="eyebrow"><span>第 1 关</span> 云朵数学岛</p>
           <h1>6点大挑战</h1>
         </div>
       </div>
 
       <div class="score-board" aria-live="polite">
-        <span aria-hidden="true">⭐</span>
-        <span>我的积分</span>
+        <span class="score-star" aria-hidden="true">★</span>
+        <span class="score-label">我的积分</span>
         <strong id="score">0</strong>
       </div>
     </header>
 
-    <section class="rule-card" aria-label="游戏规则">
-      <span aria-hidden="true">💡</span>
-      <p>想办法接近 6 点，但不能超过 6！你可以继续摸牌，也可以及时停下。</p>
+    <section class="guide-card" aria-label="游戏规则">
+      <div class="guide-character" aria-hidden="true">
+        <span class="owl-ear owl-ear--left"></span>
+        <span class="owl-ear owl-ear--right"></span>
+        <span class="owl-eye owl-eye--left"></span>
+        <span class="owl-eye owl-eye--right"></span>
+        <span class="owl-beak"></span>
+      </div>
+      <div class="rule-card">
+        <span class="rule-badge">任务</span>
+        <p>勇敢接近 <strong>6 点</strong>，但千万别超过！<br>想清楚：继续摸牌，还是现在停下？</p>
+      </div>
     </section>
 
     <section class="battle-area" aria-label="对战区域">
       <article class="player-panel player-panel--me" id="playerPanel">
+        <div class="panel-ribbon">小小挑战者</div>
         <div class="player-name">
-          <span class="avatar" aria-hidden="true">😃</span>
+          <span class="avatar avatar--hero" aria-hidden="true">🦊</span>
           <div>
             <span>我的牌</span>
-            <small>小小数学家</small>
+            <small>相信你的判断！</small>
           </div>
         </div>
-        <div class="card-hand" id="playerCards" aria-label="我的牌">
-          <div class="playing-card card-back" aria-hidden="true">
-            <span class="card-pattern">?</span>
+        <div class="card-stage">
+          <span class="stage-spark stage-spark--left" aria-hidden="true">✦</span>
+          <span class="stage-spark stage-spark--right" aria-hidden="true">★</span>
+          <div class="card-hand" id="playerCards" aria-label="我的牌">
+            <div class="playing-card card-back" aria-hidden="true">
+              <span class="card-pattern">?</span>
+            </div>
           </div>
         </div>
-        <p class="card-total">当前总点数：<strong id="playerTotal">0</strong></p>
+        <p class="card-total">
+          <span>当前点数</span>
+          <strong id="playerTotal">0</strong>
+        </p>
       </article>
 
-      <div class="versus" aria-hidden="true">VS</div>
+      <div class="versus" aria-hidden="true"><span>VS</span></div>
 
       <article class="player-panel player-panel--computer" id="computerPanel">
+        <div class="panel-ribbon">电脑对手</div>
         <div class="player-name">
-          <span class="avatar" aria-hidden="true">🤖</span>
+          <span class="avatar avatar--robot" aria-hidden="true">🤖</span>
           <div>
             <span>电脑的牌</span>
-            <small>谨慎的小对手</small>
+            <small>它正在认真计算</small>
           </div>
         </div>
-        <div class="card-hand" id="computerCards" aria-label="电脑的牌">
-          <div class="playing-card card-back" aria-hidden="true">
-            <span class="card-pattern">?</span>
+        <div class="card-stage">
+          <span class="stage-spark stage-spark--left" aria-hidden="true">●</span>
+          <span class="stage-spark stage-spark--right" aria-hidden="true">✦</span>
+          <div class="card-hand" id="computerCards" aria-label="电脑的牌">
+            <div class="playing-card card-back" aria-hidden="true">
+              <span class="card-pattern">?</span>
+            </div>
           </div>
         </div>
-        <p class="card-total">当前总点数：<strong id="computerTotal">0</strong></p>
+        <p class="card-total">
+          <span>当前点数</span>
+          <strong id="computerTotal">0</strong>
+        </p>
       </article>
     </section>
 
     <section class="result-box result-box--ready" id="resultBox" aria-live="assertive">
       <span class="result-icon" id="resultIcon" aria-hidden="true">👋</span>
-      <div>
+      <div class="result-copy">
         <h2 id="resultTitle">准备好了吗？</h2>
         <p id="resultMessage">先摸一张牌，开始挑战吧！</p>
       </div>
+      <span class="reward-spark reward-spark--one" aria-hidden="true">★</span>
+      <span class="reward-spark reward-spark--two" aria-hidden="true">✦</span>
     </section>
 
     <section class="actions" aria-label="游戏操作">
       <button class="draw-button" id="drawButton" type="button">
-        <span aria-hidden="true">🂠</span>
-        摸一张
+        <span class="button-icon" aria-hidden="true">🂠</span>
+        <span>摸一张</span>
       </button>
       <button class="stop-button is-hidden" id="stopButton" type="button">
-        <span aria-hidden="true">✋</span>
-        停止摸牌
+        <span class="button-icon" aria-hidden="true">✋</span>
+        <span>停止摸牌</span>
       </button>
       <button class="next-button is-hidden" id="nextButton" type="button">
-        <span aria-hidden="true">✨</span>
-        下一局
+        <span class="button-icon" aria-hidden="true">🚀</span>
+        <span>下一局</span>
       </button>
       <button class="reset-button" id="resetButton" type="button">
-        <span aria-hidden="true">↻</span>
-        重新开始
+        <span class="button-icon" aria-hidden="true">↻</span>
+        <span>重新开始</span>
       </button>
     </section>
+
+    <p class="footer-cheer"><span aria-hidden="true">🌈</span> 每一次选择，都让你更会思考！</p>
   </main>
 
   <div class="confetti" id="confetti" aria-hidden="true"></div>
